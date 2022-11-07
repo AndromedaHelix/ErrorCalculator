@@ -25,8 +25,8 @@ public class Calculator {
 
             print("The results are:");
             System.out.println("Average: " + getAverage(data));
-            System.out.println("Standar Deviation: " + getStandardDeviation(data));
-            System.out.println("Rounded Deviation: " + roundDeviation(getStandardDeviation(data)));
+            System.out.println("Standard Deviation: " + getStandardDeviation(data));
+            System.out.println("Rounded Standard Deviation: " + roundDeviation(getStandardDeviation(data)));
 
             print("Do you want to continue? (y/n)");
             char answer = in.next().charAt(0);
