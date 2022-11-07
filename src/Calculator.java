@@ -16,7 +16,7 @@ public class Calculator {
         boolean isRunning = true;
 
         while (isRunning) {
-            
+
             print("Number of data sets: ");
             int num = in.nextInt();
             List<Double> data = new ArrayList<Double>();
