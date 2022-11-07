@@ -11,6 +11,8 @@ public class Calculator {
     public static void main(String[] args) throws Exception {
         Scanner in = new Scanner(System.in);
 
+        print("Welcome to the calculator");
+
         boolean isRunning = true;
 
         while (isRunning) {
