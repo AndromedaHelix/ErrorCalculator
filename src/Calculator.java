@@ -25,10 +25,7 @@ public class Calculator {
                 data.add(in.nextDouble());
             }
 
-            print("The results are:");
-            System.out.println("Average: " + getAverage(data));
-            System.out.println("Standard Deviation: " + getStandardDeviation(data));
-            System.out.println("Rounded Standard Deviation: " + roundDeviation(getStandardDeviation(data)));
+            showResults(data);
 
             print("Do you want to continue? (y/n)");
             char answer = in.next().charAt(0);
@@ -45,6 +42,14 @@ public class Calculator {
             }
         }
         in.close();
+    }
+
+    public static void showResults(List<Double> data) {
+        print("The results are:");
+        System.out.println("Average: " + getAverage(data));
+        getVariance(data, true);
+        System.out.println("Standard Deviation (Error): " + getStandardDeviation(data));
+        System.out.println("Rounded Standard Deviation: " + roundDeviation(getStandardDeviation(data)));
     }
 
     public static double getAverage(List<Double> data) {
@@ -65,18 +70,23 @@ public class Calculator {
         return deviation;
     }
 
-    public static double getVariance(List<Double> data) {
+    public static double getVariance(List<Double> data, boolean showResults) {
         List<Double> deviation = getDeviation(data);
         double sum = 0;
+        double currentNum = 0;
         for (double d : deviation) {
-            sum += Math.pow(d, 2);
+            currentNum = Math.pow(d, 2);
+            if (showResults) {
+                print("Current deviation: " + d + " Corresponding variance: " + currentNum);
+            }
+            sum += currentNum;
         }
         double variance = sum / (deviation.size() - 1);
         return variance;
     }
 
     public static double getStandardDeviation(List<Double> data) {
-        double variance = getVariance(data);
+        double variance = getVariance(data, false);
         double standardDeviation = Math.sqrt(variance);
         return standardDeviation;
     }
